@@ -27,9 +27,10 @@ client.on('messageCreate', async message => {
         prompt = prompt + `${message.author.displayName}: ${message.content}`
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = response.text();
+        let text = response.text();
+        if (text.startsWith("Jeff:")) text = text.slice(5).trim(); else return
         message.reply(text);
-        prompt = prompt + text
+        prompt = prompt + `Jeff: ${text}`
         return;
     }
 });
