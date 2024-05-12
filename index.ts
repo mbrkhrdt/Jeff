@@ -67,7 +67,7 @@ client.on('messageCreate', async message => {
         const result = await chat.sendMessage(`${message.author.displayName}: ${message.content}`);
         const response = await result.response;
         let text = response.text();
-        if (text.length == 0) text = "Error";
+        if (text.length == 0) text = "Error: This message violated content policies";
         if (text.startsWith(`${process.env.BotName}:`)) text = text.slice(5).trim();
         message.channel.send(text);
         return;

@@ -1,7 +1,7 @@
 {
   "name": "jeff",
   "module": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "bun run index.ts"
   },
