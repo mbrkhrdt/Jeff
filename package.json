@@ -1,21 +1,16 @@
 {
-  "name": "geoff2",
-  "version": "1.0.0",
-  "description": "An AI chatbot for Discord",
-  "main": "index.js",
+  "name": "jeff",
+  "module": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bun run index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mbrkhrdt/Geoff2.git"
+  "devDependencies": {
+    "@types/bun": "latest"
   },
-  "author": "Michael Burkhardt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mbrkhrdt/Geoff2/issues"
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   },
-  "homepage": "https://github.com/mbrkhrdt/Geoff2#readme",
   "dependencies": {
     "@google/generative-ai": "^0.11.1",
     "discord.js": "^14.15.2",
