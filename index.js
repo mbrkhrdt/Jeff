@@ -19,10 +19,10 @@ const genAI = new GoogleGenerativeAI(process.env.GoogleAPIKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro"});
 
     const generationConfig = {
-      temperature: 0.9,
+      temperature: 0.7,
       topK: 0,
       topP: 1,
-      maxOutputTokens: 2048,
+      maxOutputTokens: 16384,
     };
   
     const safetySettings = [
@@ -63,6 +63,7 @@ client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
     if (message.channel.name == "jeff") {
+      message.channel.sendTyping();
       const result = await chat.sendMessage(`${message.author.displayName}: ${message.content}`);
       const response = await result.response;
       let text = response.text()
