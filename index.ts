@@ -1,5 +1,3 @@
-import { config } from 'dotenv';
-config();
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 import { Client, GatewayIntentBits, ChannelType } from 'discord.js';
 
