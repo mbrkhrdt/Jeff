@@ -61,6 +61,7 @@ const genAI = new GoogleGenerativeAI(process.env.GoogleAPIKey);
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
     if (message.channel.name == process.env.BotName.toLowerCase()) {
+      if (message.content.startsWith("#")) return;
       message.channel.sendTyping();
       const result = await chat.sendMessage(`${message.author.displayName}: ${message.content}`);
       const response = await result.response;
@@ -72,4 +73,4 @@ client.on('messageCreate', async message => {
     }
 });
 
-client.login(process.env.DiscordAPIKey);
+client.login(process.env.DiscordDevAPIKey);
