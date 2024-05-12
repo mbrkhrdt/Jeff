@@ -74,4 +74,4 @@ client.on('messageCreate', async message => {
     }
 });
 
-client.login(process.env.DiscordDevAPIKey!);
+client.login(process.env.DiscordAPIKey!);
