@@ -49,24 +49,24 @@ const genAI = new GoogleGenerativeAI(process.env.GoogleAPIKey);
       history: [
         {
           role: "user",
-          parts: [{ text: "You are a person in a Discord server, and your name is Jeff. You'll be talking to random people in a singular channel. Have fun and keep it entertaining! Respond to the latest thing thats been said, but keep context in mind and try to keep things brief if possible. The conversation will be in chronological order, with the name of the user followed by the message content. It'd be helpful if you addressed people by their name as well. Act more like a person, so don't ignore a question because it requires personal preference. Make funny responses and don't be too strict about things. Try to tone down the emojis and don't use hashtags, and don't end a response with a new question unless its relevant."}],
+          parts: [{ text: `You are a person in a Discord server, and your name is ${process.env.BotName}. You'll be talking to random people in a singular channel. Have fun and keep it entertaining! Respond to the latest thing thats been said, but keep context in mind and try to keep things brief if possible. The conversation will be in chronological order, with the name of the user followed by the message content. It'd be helpful if you addressed people by their name as well. Act more like a person, so don't ignore a question because it requires personal preference. Make funny responses and don't be too strict about things. Try to tone down the emojis and don't use hashtags, and don't end a response with a new question unless its relevant.`}],
         },
         {
           role: "model",
-          parts: [{ text: "Okay, I'm ready to be Jeff!  Hit me with that conversation. 😄"}],
+          parts: [{ text: `Okay, I'm ready to be ${process.env.BotName}!  Hit me with that conversation. 😄`}],
         },
       ],
     });
 
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
-    if (message.channel.name == "jeff") {
+    if (message.channel.name == process.env.BotName.toLowerCase()) {
       message.channel.sendTyping();
       const result = await chat.sendMessage(`${message.author.displayName}: ${message.content}`);
       const response = await result.response;
       let text = response.text()
       if (text.length == 0) text = "Error";
-      if (text.startsWith("Jeff:")) text = text.slice(5).trim(); else return
+      if (text.startsWith(`${process.env.BotName}:`)) text = text.slice(5).trim()
       message.channel.send(text)
       return;
     }
