@@ -1,5 +1,6 @@
 # Jeff
 Jeff is a simple AI chatbot for Discord, built with Google Gemini. It can be funny (sometimes), and is overall just an entertaining thing to add to your Discord server.
+![Jeff Demo](demo.png)
 
 ## Configuration
 Due to the limited nature of the Google Gemini free tier, there's no public bot that you can just add to your server, instead you'll need to self host it. Before you get started, you'll need your own Gemini API key as well as a Discord bot token. You can get a Gemini key [here](https://aistudio.google.com/) and a Discord bot token [here](https://discord.com/developers/applications). You'll need to make sure your Discord bot has `Server Members Intent` and `Message Content Intent` enabled. All of these things can be found underneath the Bot tab.
