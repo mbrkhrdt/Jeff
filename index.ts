@@ -15,7 +15,7 @@ client.on('ready', () => {
 });
 
 const genAI = new GoogleGenerativeAI(process.env.GoogleAPIKey!);
-const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
 
 const generationConfig = {
     temperature: 0.7,
@@ -67,7 +67,7 @@ client.on('messageCreate', async message => {
         const result = await chat.sendMessage(`${message.author.displayName}: ${message.content}`);
         const response = await result.response;
         let text = response.text();
-        if (text.length == 0) text = "Error: This message violated content policies";
+        if (text.length == 0) text = "This message likely violated Google content policies.";
         if (text.startsWith(`${process.env.BotName}:`)) text = text.slice(5).trim();
         message.channel.send(text);
         return;
